@@ -73,7 +73,9 @@
 
   body {
     @apply bg-background text-foreground;
-    font-feature-settings: "rlig" 1, "calt" 1;
+    font-feature-settings:
+      "rlig" 1,
+      "calt" 1;
   }
 }
 
@@ -83,7 +85,7 @@
   }
 
   .step:before {
-    @apply absolute w-9 h-9 bg-muted rounded-full font-mono font-medium text-center text-base inline-flex items-center justify-center -indent-px border-4 border-background;
+    @apply absolute inline-flex h-9 w-9 items-center justify-center rounded-full border-4 border-background bg-muted text-center -indent-px font-mono text-base font-medium;
     @apply ml-[-50px] mt-[-4px];
     content: counter(step);
   }
@@ -94,4 +96,61 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+.rw-wrapper {
+  position: relative;
+  text-align: center;
+}
+
+.rw-words {
+  display: inline;
+  margin-left: -25%;
+}
+
+.rw-words span {
+  position: absolute;
+  opacity: 0;
+  overflow: hidden;
+  animation: rotateWordsFirst 15s linear infinite 0s;
+  /* width: 100%; */
+}
+
+.rw-words span:nth-child(2) {
+  animation-delay: 3s;
+}
+.rw-words span:nth-child(3) {
+  animation-delay: 6s;
+}
+.rw-words span:nth-child(4) {
+  animation-delay: 9s;
+}
+.rw-words span:nth-child(5) {
+  animation-delay: 12s;
+}
+.rw-words span:nth-child(6) {
+  animation-delay: 15s;
+}
+
+@keyframes rotateWordsFirst {
+  0% {
+    opacity: 1;
+    animation-timing-function: ease-in;
+    height: 0px;
+  }
+  8% {
+    opacity: 1;
+    height: 80px;
+  }
+  19% {
+    opacity: 0.1;
+    height: 80px;
+  }
+  25% {
+    opacity: 0;
+    height: 80px;
+  }
+  100% {
+    opacity: 0;
+  }
 }

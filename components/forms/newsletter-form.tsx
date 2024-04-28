@@ -53,7 +53,7 @@ export function NewsletterForm() {
           name="email"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Subscribe to our newsletter</FormLabel>
+              <FormLabel>Join our Waitlist</FormLabel>
               <FormControl>
                 <Input
                   type="email"
