@@ -13,9 +13,9 @@ export default async function IndexPage() {
       <HeroLanding />
       <PreviewLanding />
       {/* <Powered /> */}
-      <BentoGrid />
+      {/* <BentoGrid /> */}
       <InfoLanding data={infos[0]} reverse={true} />
-      {/* <InfoLanding data={infos[1]} /> */}
+      <InfoLanding data={infos[1]} />
       <Features />
       <div className="py-40"><PricingCards /></div>
       {/* <Testimonials /> */}

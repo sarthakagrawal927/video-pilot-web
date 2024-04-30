@@ -12,9 +12,8 @@ export function Features() {
         <div className="container max-w-6xl">
           <HeaderSection
             label="Features"
-            title="Discover all features."
-            subtitle="Harum quae dolore inventore repudiandae? orrupti aut temporibus
-          ariatur."
+            title="Features so ridiculous, you'd think we are kidding"
+            subtitle="Hack the growth of your social media with the help of cutting edge AI"
           />
 
           <div className="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
@@ -46,7 +45,7 @@ export function Features() {
                     {feature.description}
                   </p>
 
-                  <div className="-mb-5 flex gap-3 border-t border-muted py-4 md:-mb-7">
+                  {/* <div className="-mb-5 flex gap-3 border-t border-muted py-4 md:-mb-7">
                     <Button
                       variant="secondary"
                       size="sm"
@@ -58,7 +57,7 @@ export function Features() {
                         <Icons.arrowUpRight className="size-4" />
                       </Link>
                     </Button>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             ))}
