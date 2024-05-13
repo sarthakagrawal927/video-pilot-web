@@ -1,13 +1,53 @@
 import { redirect } from "next/navigation"
 
-import { getCurrentUser } from "@/lib/session"
-import { EmptyPlaceholder } from "@/components/shared/empty-placeholder"
+import { CreateContent } from "@/components/dashboard/createContent"
 import { DashboardHeader } from "@/components/dashboard/header"
 import { DashboardShell } from "@/components/dashboard/shell"
 import { Button } from "@/components/ui/button"
+import { getCurrentUser } from "@/lib/session"
+import { Topic, Voice } from "@/types"
 
 export const metadata = {
   title: "Dashboard",
+}
+
+async function getTopicAndVoicesOptions(): Promise<{
+  topics: Topic[],
+  voices: Voice[]
+}> {
+  return {
+    voices: [
+      {
+        link: "http://commondatastorage.googleapis.com/codeskulptor-demos/riceracer_assets/music/win.ogg",
+        name: "Ring"
+      },
+      {
+        link: "http://commondatastorage.googleapis.com/codeskulptor-demos/riceracer_assets/fx/engine-10.ogg",
+        name: "Ding dong"
+      },
+      {
+        link: "http://commondatastorage.googleapis.com/codeskulptor-demos/riceracer_assets/fx/engine-11.ogg",
+        name: "Disco"
+      }
+    ],
+    topics: [
+      {
+        label: "Topic 1"
+      },
+      {
+        label: "Topic 2"
+      },
+      {
+        label: "Topic 3"
+      },
+      {
+        label: "Topic 4"
+      },
+      {
+        label: "Topic 5"
+      },
+    ],
+  }
 }
 
 export default async function DashboardPage() {
@@ -17,21 +57,14 @@ export default async function DashboardPage() {
     redirect("/login")
   }
 
+  const { voices, topics } = await getTopicAndVoicesOptions();
+
   return (
     <DashboardShell>
       <DashboardHeader heading="Panel" text="Create and manage content.">
         <Button>Create Content</Button>
       </DashboardHeader>
-      <div>
-        <EmptyPlaceholder>
-          <EmptyPlaceholder.Icon name="post" />
-          <EmptyPlaceholder.Title>No content created</EmptyPlaceholder.Title>
-          <EmptyPlaceholder.Description>
-            You don&apos;t have any content yet. Start creating content.
-          </EmptyPlaceholder.Description>
-          <Button variant="outline">Create Content</Button>
-        </EmptyPlaceholder>
-      </div>
+      <CreateContent topics={topics} voices={voices} />
     </DashboardShell>
   )
 }

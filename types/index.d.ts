@@ -88,3 +88,15 @@ export type InfoLdg = {
   description: string;
   list: InfoList[];
 }
+
+export type Voice = {
+  link: string,
+  audio?: HTMLAudioElement,
+  name: string,
+  avatar?: string
+}
+
+export type Topic = {
+  label: string,
+  description?: string
+}
