@@ -2,7 +2,6 @@
 
 import { useTransition } from "react";
 import { zodResolver } from "@hookform/resolvers/zod"
-import { User } from "@prisma/client"
 import { useForm } from "react-hook-form"
 
 import { cn } from "@/lib/utils"
@@ -21,15 +20,11 @@ import { Label } from "@/components/ui/label"
 import { toast } from "@/components/ui/use-toast"
 import { Icons } from "@/components/shared/icons"
 
-import { updateUserName, type FormData } from "@/actions/update-user-name"
+import { type FormData } from "@/actions/update-user-name"
 
-interface UserNameFormProps {
-  user: Pick<User, "id" | "name">
-}
-
-export function UserNameForm({ user }: UserNameFormProps) {
+export function UserNameForm({ user }) {
   const [isPending, startTransition] = useTransition();
-  const updateUserNameWithId = updateUserName.bind(null, user.id);
+  // const updateUserNameWithId = updateUserName.bind(null, user.id);
 
   const {
     handleSubmit,
@@ -44,7 +39,7 @@ export function UserNameForm({ user }: UserNameFormProps) {
 
   const onSubmit = handleSubmit(data => {
     startTransition(async () => {
-      const { status } = await updateUserNameWithId(data);
+      // const { status } = await updateUserNameWithId(data);
 
       if (status !== "success") {
         toast({
