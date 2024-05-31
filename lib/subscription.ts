@@ -1,24 +1,18 @@
 // @ts-nocheck
 // TODO: Fix this when we turn strict mode on.
 import { pricingData } from "@/config/subscriptions";
-import { prisma } from "@/lib/db";
 import { stripe } from "@/lib/stripe";
 import { UserSubscriptionPlan } from "types";
 
 export async function getUserSubscriptionPlan(
   userId: string
 ): Promise<UserSubscriptionPlan> {
-  const user = await prisma.user.findFirst({
-    where: {
-      id: userId,
-    },
-    select: {
-      stripeSubscriptionId: true,
-      stripeCurrentPeriodEnd: true,
-      stripeCustomerId: true,
-      stripePriceId: true,
-    },
-  })
+  const user = {
+      id: "1",
+      name: "Alice",
+      email: "sda",
+      image: "sda",
+    }
 
   if (!user) {
     throw new Error("User not found")
